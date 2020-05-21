@@ -1,13 +1,6 @@
-import alpaca_trade_api as tradeapi
+from header import api, api_key,secret_key
 
 class Stock:
-    # important keys
-    api_key    = "PKQ16Z77F6U39OELHIS2"
-    secret_key = "2Ni8SNoFSpuVN92ZxRApFood7HGlyMqyo5ovvD1q"
-    BASE_URL = "https://paper-api.alpaca.markets"
-
-    # create the api object
-    api = tradeapi.REST(api_key,secret_key,BASE_URL)
 
     def __init__(self,name,quantity,price):
         self.name = name
@@ -24,4 +17,4 @@ class Stock:
             "limit":self.limit_price
         }
         api.submit_order(symbol,qty,side,type,time_in_force,limit_price)
-        return details 
+        return details
