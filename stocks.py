@@ -2,10 +2,13 @@ from header import api, api_key,secret_key
 
 class Stock:
 
-    def __init__(self,name,quantity,price):
-        self.name = name
-        self.quantity = quantity
-        self.price = price
+    def __init__(self,symbol,qty,side,type,time_in_force,limit_price):
+        self.symbol = symbol
+        self.qty = qty
+        self.side = side
+        self.type = type
+        self.time_in_force = time_in_force
+        self.limit_price
 
     def createOrder(self,symbol,qty,side,type,time_in_force,limit_price):
         details = {
