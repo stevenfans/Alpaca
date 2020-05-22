@@ -1,5 +1,9 @@
 from header import api, api_key,secret_key
 
+# what do i want to do with this file?
+# stock classes?
+# maybe to keep track of buy and sell orders?
+
 class Stock:
 
     def __init__(self,symbol,qty,side,type,time_in_force,limit_price):

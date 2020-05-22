@@ -6,8 +6,8 @@ import requests
 # https://algotrading101.com/learn/alpaca-trading-api-guide/
 
 # important keys
-api_key    = "PKQ16Z77F6U39OELHIS2"
-secret_key = "2Ni8SNoFSpuVN92ZxRApFood7HGlyMqyo5ovvD1q"
+api_key    = "PKPYALRHNINVZLHLIXQX"
+secret_key = "nIgH1J4D6SDVQ4QaC0RDHmvjBAXm744QsGOijFGr"
 
 # URLS
 BASE_URL = "https://paper-api.alpaca.markets"
@@ -28,3 +28,5 @@ tsla_news = api.polygon.news('TSLA')
 
 print(aapl_daily)
 # print(list_earning)
+
+order = api.submit_order('AAPL', 1, 'sell', 'market', 'day')

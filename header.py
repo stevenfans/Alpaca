@@ -2,8 +2,8 @@ import alpaca_trade_api as tradeapi
 import requests
 
 # important keys
-api_key    = "PKQ16Z77F6U39OELHIS2"
-secret_key = "2Ni8SNoFSpuVN92ZxRApFood7HGlyMqyo5ovvD1q"
+api_key    = "PKPYALRHNINVZLHLIXQX"
+secret_key = "nIgH1J4D6SDVQ4QaC0RDHmvjBAXm744QsGOijFGr"
 
 # URLS
 BASE_URL = "https://paper-api.alpaca.markets"
