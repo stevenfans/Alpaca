@@ -22,7 +22,7 @@ account = api.get_account()
 
 # Daily OHLCV dataframe
 aapl_daily = api.polygon.historic_agg_v2(symbol='aapl',multiplier=1,
-                            timespan='day',_from='2020-1-1',to='2020-5-21').df# Dictionary of most recent earning stats for each company
+                            timespan='day',_from='2020-1-1',to='2020-5-22').df# Dictionary of most recent earning stats for each company
 list_earning = api.polygon.earnings(['MSFT','FB','AMZN'])# Returns a list articles and their meta-data
 tsla_news = api.polygon.news('TSLA')
 
