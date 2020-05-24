@@ -1,5 +1,5 @@
 import header
-from header import api,api_key,secret_key
+from header import api,api_key,secret_key, ti
 from stocks import Stock
 from ta.trend import macd,macd_signal
 from ta.momentum import rsi
@@ -16,8 +16,9 @@ def aggregate(stockSymbol):
     # aggregate data for all the symbols in the stock dictionary
     for sym in stockSymbol:
         stock_detail[sym] = api.polygon.historic_agg_v2(symbol=str(sym),multiplier=1,
-                                timespan='minute',_from=str(today),to=str(tomorrow)).df# Dictionary of most recent earning stats for each compan
+                                timespan='minute',_from='5-18-2020',to='5-21-2020').df# Dictionary of most recent earning stats for each compan
 
+    print(stock_detail)
     return stock_detail
 
 
@@ -55,11 +56,17 @@ def scan(stock_detail,buying_amount):
             n_slow = 26
         )
 
+    # Getting MACD using alpha vantage
+    data_ti,meta_data_ti = ti.get_macd(symbol='AAPL',interval='daily',
+                                    series_type='close',fastperiod=12,
+                                    slowperiod=26,signalperiod=9)
+
     # check the history for the macd
     for sym in stock_macd: 
 
-        print("MACD: "+ str(stock_macd[sym][-1]))
-        print("MACD SIGNAL: " + str(stock_macd_signal[sym][-1]))
+        print(stock_macd[sym])
+        # print("MACD: "+ str(stock_macd[sym][-1]))
+        # print("MACD SIGNAL: " + str(stock_macd_signal[sym][-1]))
 
         # check the macd is low and has a positive slope
         if stock_macd[sym][-1]> 0 and (stock_macd[sym][-3]<stock_macd[sym][-2]<stock_macd[sym][-1]): 
