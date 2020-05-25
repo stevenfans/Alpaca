@@ -6,6 +6,8 @@ from ta.momentum import rsi
 import time
 from datetime import date, timedelta
 
+posMACD = False; 
+
 def aggregate(stockSymbol):
 
     stock_detail = {}
@@ -57,23 +59,27 @@ def scan(stock_detail,buying_amount):
         )
 
     # Getting MACD using alpha vantage
+    # 5 calls per min 
     data_ti,meta_data_ti = ti.get_macd(symbol='AAPL',interval='daily',
                                     series_type='close',fastperiod=12,
                                     slowperiod=26,signalperiod=9)
-
+    
     # check the history for the macd
-    for sym in stock_macd: 
+    if (data_ti['MACD'][-1]>0 and data_ti['MACD_Signal'])
 
-        print(stock_macd[sym])
+    # for sym in stock_macd: 
+
+        # print(stock_macd[sym])
         # print("MACD: "+ str(stock_macd[sym][-1]))
         # print("MACD SIGNAL: " + str(stock_macd_signal[sym][-1]))
 
-        # check the macd is low and has a positive slope
-        if stock_macd[sym][-1]> 0 and (stock_macd[sym][-3]<stock_macd[sym][-2]<stock_macd[sym][-1]): 
-            # macd looks good so maybe trade now?
-            # qty = determineShare(sym,buying_amount)
-            # api.submit_order(sym,3,'buy','market','day')
-            print("Buying Stock {symbol}".format(symbol=sym))
+        # if stock_macd[sym][-1]> 0 and (stock_macd[sym][-3]<stock_macd[sym][-2]<stock_macd[sym][-1]): 
+        #     # macd looks good so maybe trade now?
+        #     # qty = determineShare(sym,buying_amount)
+        #     # api.submit_order(sym,3,'buy','market','day')
+        #     print("Buying Stock {symbol}".format(symbol=sym))
+
+
 
 
 
@@ -86,10 +92,14 @@ def main():
     amount =  account.buying_power; 
     buying_amount = float(amount)/len(stock)
 
+
+    # check initial histogram from MACD
+
+
     while True: 
         stock_detail = aggregate(stock)
         scan(stock_detail,buying_amount)
-        time.sleep(1)
+        time.sleep(15)
 
     print("Done")
 
