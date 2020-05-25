@@ -21,5 +21,5 @@ data_ti,meta_data_ti = ti.get_macd(symbol='AAPL',interval='daily',
                                 series_type='close',fastperiod=12,
                                 slowperiod=26,signalperiod=9)
 
-print(data_ti['MACD_Hist'][-1])
+# print(data_ti['MACD_Hist'][-1])
 
