@@ -23,3 +23,6 @@ data_ti,meta_data_ti = ti.get_macd(symbol='AAPL',interval='daily',
 
 # print(data_ti['MACD_Hist'][-1])
 
+# Create Clock entity
+clock = api.get_clock()
+
